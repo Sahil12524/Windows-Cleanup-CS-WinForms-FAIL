@@ -7,6 +7,13 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <SignAssembly>True</SignAssembly>
+    <UseWPF>True</UseWPF>
+    <ApplicationIcon>cleaning broom.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="cleaning broom.ico" />
+  </ItemGroup>
 
 </Project>
