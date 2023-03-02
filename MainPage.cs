@@ -34,13 +34,13 @@ namespace Windows_Cleanup
             taskRunning = true;
             do
             {
-                await Task.Delay(1000);
+                await Task.Delay(500);
                 themeChecker();
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                GC.Collect();
             }
             while (taskRunning);
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
 
         }
         public MainPage()
@@ -51,47 +51,24 @@ namespace Windows_Cleanup
         private void MainPage_Load(object sender, EventArgs e)
         {
             themeChecker();
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            GC.Collect();
         }
 
         private void MainPage_Activated(object sender, EventArgs e)
         {
-            if (WindowState == FormWindowState.Minimized)
-            {
-                // Do some stuff
-                taskRunning = false;
-            }
-            if (WindowState == FormWindowState.Normal)
-            {
-                taskRunning = false;
-            }
+            _ = updateTheme();
             taskRunning = false;
         }
 
         private void MainPage_Deactivate(object sender, EventArgs e)
         {
             //taskRunning = true;
-            updateTheme();
+            _ = updateTheme();
             if (WindowState == FormWindowState.Minimized)
             {
                 // Do some stuff
+                _ = updateTheme();
                 taskRunning = false;
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                GC.Collect();
             }
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            GC.Collect();
-        }
-
-        private void MainPage_Resize(object sender, EventArgs e)
-        {
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            GC.Collect();
         }
     }
 }
