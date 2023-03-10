@@ -1,10 +1,17 @@
-﻿namespace Windows_Cleanup.Views
+﻿using System.ComponentModel;
+
+namespace Windows_Cleanup.Views
 {
-    public partial class HomeView : Form
+    public partial class HomeView : Form, IDisposable
     {
         public HomeView()
         {
             InitializeComponent();
+        }
+
+        private void HomeView_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

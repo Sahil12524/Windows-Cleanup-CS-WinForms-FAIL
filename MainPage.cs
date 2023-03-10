@@ -1,11 +1,13 @@
 using Microsoft.Win32;
 using System.Runtime.InteropServices;
 using Windows_Cleanup.Helper;
+using Windows_Cleanup.Views;
 
 namespace Windows_Cleanup
 {
     public partial class MainPage : Form
     {
+        HomeView homeView = new HomeView();
         bool taskRunning;
         bool isLightMode;
         [DllImport("DwmApi")]
@@ -43,13 +45,31 @@ namespace Windows_Cleanup
             GC.Collect();
 
         }
+
+        public void switchPanel(Form panel)
+        {
+            splitContainer1.Panel2.Controls.Clear();
+            panel.TopLevel = false;
+            panel.FormBorderStyle = FormBorderStyle.None;
+            panel.Dock = DockStyle.Fill;
+            panel.AutoSize = true;
+            panel.AutoSizeMode = AutoSizeMode.GrowOnly;
+            panel.AutoScroll = true;
+            splitContainer1.Panel2.Controls.Add(panel);
+            panel.Show();
+        }
+
         public MainPage()
         {
             InitializeComponent();
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+
         }
 
         private void MainPage_Load(object sender, EventArgs e)
         {
+            switchPanel(homeView);
             themeChecker();
         }
 
@@ -69,6 +89,11 @@ namespace Windows_Cleanup
                 _ = updateTheme();
                 taskRunning = false;
             }
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            switchPanel(homeView);
         }
     }
 }
