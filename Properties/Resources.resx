@@ -121,4 +121,10 @@
   <data name="cleaning broom" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\cleaning broom.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="home32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\home32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="home32x32Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\home32x32Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

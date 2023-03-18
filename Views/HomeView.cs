@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace Windows_Cleanup.Views
+﻿namespace Windows_Cleanup.Views
 {
     public partial class HomeView : Form, IDisposable
     {

@@ -7,6 +7,8 @@ namespace Windows_Cleanup
 {
     public partial class MainPage : Form
     {
+        public Button buttonHome;
+        public static MainPage mainPageInstance;
         HomeView homeView = new HomeView();
         bool taskRunning;
         bool isLightMode;
@@ -48,23 +50,26 @@ namespace Windows_Cleanup
 
         public void switchPanel(Form panel)
         {
-            splitContainer1.Panel2.Controls.Clear();
+            panel3.Controls.Clear();
             panel.TopLevel = false;
             panel.FormBorderStyle = FormBorderStyle.None;
             panel.Dock = DockStyle.Fill;
             panel.AutoSize = true;
             panel.AutoSizeMode = AutoSizeMode.GrowOnly;
             panel.AutoScroll = true;
-            splitContainer1.Panel2.Controls.Add(panel);
+            panel3.Controls.Add(panel);
+            panel3.AutoSize = true;
+            panel.TopMost = true;
             panel.Show();
         }
 
         public MainPage()
         {
             InitializeComponent();
+            mainPageInstance = this;
+            buttonHome = btnHome;
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-
         }
 
         private void MainPage_Load(object sender, EventArgs e)
