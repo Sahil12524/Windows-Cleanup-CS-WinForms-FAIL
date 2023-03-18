@@ -1,13 +1,13 @@
 ﻿namespace Windows_Cleanup.Views
 {
-    public partial class HomeView : Form, IDisposable
+    public partial class SettingsView : Form, IDisposable
     {
-        public HomeView()
+        public SettingsView()
         {
             InitializeComponent();
         }
 
-        private void HomeView_Load(object sender, EventArgs e)
+        private void SettingsView_Load(object sender, EventArgs e)
         {
             MainPage.mainPageInstance.themeChecker();
         }

@@ -15,6 +15,11 @@
             MainPage.mainPageInstance.buttonHome.Image = Properties.Resources.home32x32Dark;
             MainPage.mainPageInstance.buttonHome.ImageAlign = ContentAlignment.MiddleLeft;
             MainPage.mainPageInstance.buttonHome.TextAlign = ContentAlignment.MiddleCenter;
+
+            MainPage.mainPageInstance.buttonSettings.FlatStyle = FlatStyle.Flat;
+            MainPage.mainPageInstance.buttonSettings.Image = Properties.Resources.setting32x32Dark;
+            MainPage.mainPageInstance.buttonSettings.ImageAlign = ContentAlignment.MiddleLeft;
+            MainPage.mainPageInstance.buttonSettings.TextAlign = ContentAlignment.MiddleCenter;
         }
 
         public static void LightTheme()
@@ -28,6 +33,11 @@
             MainPage.mainPageInstance.buttonHome.Image = Properties.Resources.home32x32;
             MainPage.mainPageInstance.buttonHome.ImageAlign = ContentAlignment.MiddleLeft;
             MainPage.mainPageInstance.buttonHome.TextAlign = ContentAlignment.MiddleCenter;
+
+            MainPage.mainPageInstance.buttonSettings.FlatStyle = FlatStyle.Flat;
+            MainPage.mainPageInstance.buttonSettings.Image = Properties.Resources.setting32x32;
+            MainPage.mainPageInstance.buttonSettings.ImageAlign = ContentAlignment.MiddleLeft;
+            MainPage.mainPageInstance.buttonSettings.TextAlign = ContentAlignment.MiddleCenter;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Windows_Cleanup.Views
 {
-    partial class HomeView
+    partial class SettingsView
     {
         /// <summary>
         /// Required designer variable.
@@ -39,8 +39,8 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1197, 60);
-            panel1.TabIndex = 0;
+            panel1.Size = new Size(800, 60);
+            panel1.TabIndex = 1;
             // 
             // label1
             // 
@@ -49,20 +49,20 @@
             label1.Font = new Font("Segoe UI", 25F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
-            label1.Size = new Size(111, 60);
+            label1.Size = new Size(150, 60);
             label1.TabIndex = 0;
-            label1.Text = "Home";
+            label1.Text = "Settings";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // HomeView
+            // SettingsView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1197, 766);
+            ClientSize = new Size(800, 450);
             Controls.Add(panel1);
-            Name = "HomeView";
-            Text = "HomeView";
-            Load += HomeView_Load;
+            Name = "SettingsView";
+            Text = "SettingsView";
+            Load += SettingsView_Load;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
         }

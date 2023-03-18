@@ -7,9 +7,10 @@ namespace Windows_Cleanup
 {
     public partial class MainPage : Form
     {
-        public Button buttonHome;
+        public Button buttonHome, buttonSettings;
         public static MainPage mainPageInstance;
         HomeView homeView = new HomeView();
+        SettingsView settingsView = new SettingsView();
         bool taskRunning;
         bool isLightMode;
         [DllImport("DwmApi")]
@@ -68,12 +69,14 @@ namespace Windows_Cleanup
             InitializeComponent();
             mainPageInstance = this;
             buttonHome = btnHome;
+            buttonSettings = btnSettings;
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
         }
 
         private void MainPage_Load(object sender, EventArgs e)
         {
+            panel3.Tag = "HomeView";
             switchPanel(homeView);
             themeChecker();
         }
@@ -98,7 +101,30 @@ namespace Windows_Cleanup
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-            switchPanel(homeView);
+            if (panel3.Tag?.ToString() == "HomeView")
+            {
+                return;
+            }
+            else
+            {
+                panel3.Tag = "HomeView";
+                switchPanel(homeView);
+                return;
+            }
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            if (panel3.Tag?.ToString() == "SettingsView")
+            {
+                return;
+            }
+            else
+            {
+                panel3.Tag = "SettingsView";
+                switchPanel(settingsView);
+                return;
+            }
         }
     }
 }
