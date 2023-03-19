@@ -5,31 +5,40 @@ using Windows_Cleanup.Views;
 
 namespace Windows_Cleanup
 {
-    public partial class MainPage : Form
+    public partial class MainPage : Form, IDisposable
     {
         public Button buttonHome, buttonSettings;
         public static MainPage mainPageInstance;
         HomeView homeView = new HomeView();
         SettingsView settingsView = new SettingsView();
-        bool taskRunning;
+        bool updateThemeTaskRunning;
         bool isLightMode;
         [DllImport("DwmApi")]
         private static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, int[] attrValue, int attrSize);
         public MainPage()
         {
             InitializeComponent();
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             mainPageInstance = this;
             buttonHome = btnHome;
             buttonSettings = btnSettings;
-            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
         }
 
         private void MainPage_Load(object sender, EventArgs e)
         {
             panel3.Tag = "HomeView";
             switchPanel(homeView);
-            themeChecker();
+            memoryFreeUp();
+            //themeChecker();
+        }
+
+        public void memoryFreeUp()
+        {
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
+            return;
         }
 
         public void themeChecker()
@@ -40,9 +49,12 @@ namespace Windows_Cleanup
                 if (DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0)
                 {
                     DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4);
+                    return;
                 }
                 ThemeHelper.DarkTheme();
                 isLightMode = false;
+                memoryFreeUp();
+                return;
             }
             else // Light Mode
             {
@@ -50,21 +62,21 @@ namespace Windows_Cleanup
                 ThemeHelper.LightTheme();
                 isLightMode = true;
             }
+            memoryFreeUp();
+            return;
         }
 
         public async Task updateTheme()
         {
-            taskRunning = true;
+            updateThemeTaskRunning = true;
             do
             {
                 await Task.Delay(500);
                 themeChecker();
             }
-            while (taskRunning);
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            GC.Collect();
-
+            while (updateThemeTaskRunning);
+            memoryFreeUp();
+            return;
         }
 
         public void switchPanel(Form panel)
@@ -81,31 +93,35 @@ namespace Windows_Cleanup
             panel.TopMost = true;
             panel.BringToFront();
             panel.Show();
+            memoryFreeUp();
+            return;
         }
 
         private void MainPage_Activated(object sender, EventArgs e)
         {
             _ = updateTheme();
-            taskRunning = false;
+            updateThemeTaskRunning = false;
+            return;
         }
 
         private void MainPage_Deactivate(object sender, EventArgs e)
         {
-            //taskRunning = true;
+            //updateThemeTaskRunning = true;
             _ = updateTheme();
             if (WindowState == FormWindowState.Minimized)
             {
                 // Do some stuff
                 _ = updateTheme();
-                taskRunning = false;
+                updateThemeTaskRunning = false;
+                return;
             }
+            return;
         }
 
         private void MainPage_ResizeEnd(object sender, EventArgs e)
         {
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            GC.Collect();
+            memoryFreeUp();
+            return;
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -116,11 +132,9 @@ namespace Windows_Cleanup
             }
             else
             {
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                GC.Collect();
                 panel3.Tag = "HomeView";
                 switchPanel(homeView);
+                memoryFreeUp();
                 return;
             }
         }
@@ -133,11 +147,9 @@ namespace Windows_Cleanup
             }
             else
             {
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                GC.Collect();
                 panel3.Tag = "SettingsView";
                 switchPanel(settingsView);
+                memoryFreeUp();
                 return;
             }
         }

@@ -39,7 +39,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 60);
+            panel1.Size = new Size(800, 130);
             panel1.TabIndex = 1;
             // 
             // label1
@@ -50,7 +50,7 @@
             label1.Font = new Font("Segoe UI", 25F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
-            label1.Size = new Size(150, 60);
+            label1.Size = new Size(150, 130);
             label1.TabIndex = 0;
             label1.Text = "Settings";
             label1.TextAlign = ContentAlignment.MiddleCenter;

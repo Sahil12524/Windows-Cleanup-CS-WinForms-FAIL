@@ -36,7 +36,6 @@
             tableLayoutPanel2 = new TableLayoutPanel();
             btnSettings = new Button();
             panel3 = new Panel();
-            panel4 = new Panel();
             tableLayoutPanel1.SuspendLayout();
             panel2.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -122,18 +121,11 @@
             // 
             panel3.AutoSize = true;
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(284, 40);
+            panel3.Location = new Point(284, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(918, 685);
+            panel3.Padding = new Padding(25, 0, 0, 0);
+            panel3.Size = new Size(918, 725);
             panel3.TabIndex = 3;
-            // 
-            // panel4
-            // 
-            panel4.Dock = DockStyle.Top;
-            panel4.Location = new Point(284, 0);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(918, 40);
-            panel4.TabIndex = 4;
             // 
             // MainPage
             // 
@@ -142,7 +134,6 @@
             AutoSize = true;
             ClientSize = new Size(1202, 725);
             Controls.Add(panel3);
-            Controls.Add(panel4);
             Controls.Add(panel2);
             DoubleBuffered = true;
             HelpButton = true;
@@ -169,6 +160,5 @@
         private Panel panel3;
         private TableLayoutPanel tableLayoutPanel2;
         private Button btnSettings;
-        private Panel panel4;
     }
 }

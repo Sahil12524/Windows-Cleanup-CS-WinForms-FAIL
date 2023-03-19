@@ -11,6 +11,7 @@
                 form.BackColor = Color.FromArgb(32, 32, 32);
                 form.ForeColor = SystemColors.Control;
             }
+
             MainPage.mainPageInstance.buttonHome.FlatStyle = FlatStyle.Flat;
             MainPage.mainPageInstance.buttonHome.Image = Properties.Resources.home32x32Dark;
             MainPage.mainPageInstance.buttonHome.ImageAlign = ContentAlignment.MiddleLeft;
@@ -20,6 +21,7 @@
             MainPage.mainPageInstance.buttonSettings.Image = Properties.Resources.setting32x32Dark;
             MainPage.mainPageInstance.buttonSettings.ImageAlign = ContentAlignment.MiddleLeft;
             MainPage.mainPageInstance.buttonSettings.TextAlign = ContentAlignment.MiddleCenter;
+            return;
         }
 
         public static void LightTheme()
@@ -38,6 +40,7 @@
             MainPage.mainPageInstance.buttonSettings.Image = Properties.Resources.setting32x32;
             MainPage.mainPageInstance.buttonSettings.ImageAlign = ContentAlignment.MiddleLeft;
             MainPage.mainPageInstance.buttonSettings.TextAlign = ContentAlignment.MiddleCenter;
+            return;
         }
     }
 }
