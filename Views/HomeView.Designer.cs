@@ -46,6 +46,7 @@
             // 
             label1.AutoEllipsis = true;
             label1.Dock = DockStyle.Left;
+            label1.FlatStyle = FlatStyle.Flat;
             label1.Font = new Font("Segoe UI", 25F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
