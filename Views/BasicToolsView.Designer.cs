@@ -82,7 +82,6 @@
             // panel2
             // 
             panel2.AutoScroll = true;
-            panel2.AutoSize = true;
             panel2.Controls.Add(tableLayoutPanel4);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 130);
@@ -358,7 +357,6 @@
             tableLayoutPanel5.ResumeLayout(false);
             tableLayoutPanel5.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion

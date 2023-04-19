@@ -12,7 +12,7 @@
 
         private void SettingsView_Load(object sender, EventArgs e)
         {
-            MainPage.mainPageInstance.themeChecker();
+            MainPage.mainPageInstance?.themeChecker();
         }
     }
 }

@@ -2,7 +2,7 @@
 {
     public partial class BasicToolsView : Form, IDisposable
     {
-        public static BasicToolsView basicToolsViewInstance;
+        public static BasicToolsView? basicToolsViewInstance { get; set; }
         public Button buttonTempFilesRemove, buttonWindowsUpdateCacheClean, buttonCHKDSK, buttonSSDTrim;
         public BasicToolsView()
         {
@@ -19,7 +19,7 @@
 
         private void BasicToolsView_Load(object sender, EventArgs e)
         {
-            MainPage.mainPageInstance.themeChecker();
+            MainPage.mainPageInstance?.themeChecker();
         }
 
         private void btnTempFilesRemove_Click(object sender, EventArgs e)

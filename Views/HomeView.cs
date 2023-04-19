@@ -12,7 +12,7 @@
 
         private void HomeView_Load(object sender, EventArgs e)
         {
-            MainPage.mainPageInstance.themeChecker();
+            MainPage.mainPageInstance?.themeChecker();
         }
     }
 }

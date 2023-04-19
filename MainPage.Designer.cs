@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPage));
             tableLayoutPanel1 = new TableLayoutPanel();
+            btnNetTools = new Button();
             btnBasicTools = new Button();
             btnHome = new Button();
             panel1 = new Panel();
@@ -44,20 +45,37 @@
             // 
             // tableLayoutPanel1
             // 
+            tableLayoutPanel1.AutoScroll = true;
             tableLayoutPanel1.AutoSize = true;
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Controls.Add(btnNetTools, 0, 2);
             tableLayoutPanel1.Controls.Add(btnBasicTools, 0, 1);
             tableLayoutPanel1.Controls.Add(btnHome, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Top;
             tableLayoutPanel1.Location = new Point(0, 40);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 3;
+            tableLayoutPanel1.RowCount = 4;
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.Size = new Size(284, 84);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.Size = new Size(284, 126);
             tableLayoutPanel1.TabIndex = 0;
+            // 
+            // btnNetTools
+            // 
+            btnNetTools.AutoEllipsis = true;
+            btnNetTools.Dock = DockStyle.Fill;
+            btnNetTools.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnNetTools.Location = new Point(3, 87);
+            btnNetTools.Name = "btnNetTools";
+            btnNetTools.Size = new Size(278, 36);
+            btnNetTools.TabIndex = 2;
+            btnNetTools.Text = "Net Tools";
+            btnNetTools.TextAlign = ContentAlignment.MiddleLeft;
+            btnNetTools.UseVisualStyleBackColor = true;
+            btnNetTools.Click += btnNetTools_Click;
             // 
             // btnBasicTools
             // 
@@ -109,6 +127,7 @@
             // 
             // tableLayoutPanel2
             // 
+            tableLayoutPanel2.AutoScroll = true;
             tableLayoutPanel2.AutoSize = true;
             tableLayoutPanel2.ColumnCount = 1;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
@@ -177,5 +196,6 @@
         private TableLayoutPanel tableLayoutPanel2;
         private Button btnSettings;
         private Button btnBasicTools;
+        private Button btnNetTools;
     }
 }

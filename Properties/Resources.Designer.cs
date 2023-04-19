@@ -93,6 +93,26 @@ namespace Windows_Cleanup.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap internet32x32 {
+            get {
+                object obj = ResourceManager.GetObject("internet32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap internet32x32Dark {
+            get {
+                object obj = ResourceManager.GetObject("internet32x32Dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap setting32x32 {
             get {
                 object obj = ResourceManager.GetObject("setting32x32", resourceCulture);
@@ -106,6 +126,26 @@ namespace Windows_Cleanup.Properties {
         internal static System.Drawing.Bitmap setting32x32Dark {
             get {
                 object obj = ResourceManager.GetObject("setting32x32Dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap smile32x32 {
+            get {
+                object obj = ResourceManager.GetObject("smile32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap smile32x32Dark {
+            get {
+                object obj = ResourceManager.GetObject("smile32x32Dark", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
