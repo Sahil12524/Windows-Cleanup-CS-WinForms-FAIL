@@ -47,10 +47,10 @@
             label1.AutoEllipsis = true;
             label1.Dock = DockStyle.Left;
             label1.FlatStyle = FlatStyle.Flat;
-            label1.Font = new Font("Segoe UI", 25F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Segoe UI Semibold", 24.75F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
-            label1.Size = new Size(150, 130);
+            label1.Size = new Size(142, 130);
             label1.TabIndex = 0;
             label1.Text = "Settings";
             label1.TextAlign = ContentAlignment.MiddleCenter;

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPage));
             tableLayoutPanel1 = new TableLayoutPanel();
+            btnBasicTools = new Button();
             btnHome = new Button();
             panel1 = new Panel();
             panel2 = new Panel();
@@ -46,23 +47,40 @@
             tableLayoutPanel1.AutoSize = true;
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Controls.Add(btnBasicTools, 0, 1);
             tableLayoutPanel1.Controls.Add(btnHome, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Top;
             tableLayoutPanel1.Location = new Point(0, 40);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 2;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.RowCount = 3;
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.Size = new Size(284, 50);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.Size = new Size(284, 84);
             tableLayoutPanel1.TabIndex = 0;
+            // 
+            // btnBasicTools
+            // 
+            btnBasicTools.AutoEllipsis = true;
+            btnBasicTools.Dock = DockStyle.Fill;
+            btnBasicTools.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnBasicTools.Location = new Point(3, 45);
+            btnBasicTools.Name = "btnBasicTools";
+            btnBasicTools.Size = new Size(278, 36);
+            btnBasicTools.TabIndex = 1;
+            btnBasicTools.Text = "Basic Tools";
+            btnBasicTools.TextAlign = ContentAlignment.MiddleLeft;
+            btnBasicTools.UseVisualStyleBackColor = true;
+            btnBasicTools.Click += btnBasicTools_Click;
             // 
             // btnHome
             // 
+            btnHome.AutoEllipsis = true;
             btnHome.Dock = DockStyle.Fill;
-            btnHome.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            btnHome.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnHome.Location = new Point(3, 3);
             btnHome.Name = "btnHome";
-            btnHome.Size = new Size(278, 44);
+            btnHome.Size = new Size(278, 36);
             btnHome.TabIndex = 0;
             btnHome.Text = "Home";
             btnHome.TextAlign = ContentAlignment.MiddleLeft;
@@ -86,7 +104,7 @@
             panel2.Dock = DockStyle.Left;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(284, 725);
+            panel2.Size = new Size(284, 761);
             panel2.TabIndex = 2;
             // 
             // tableLayoutPanel2
@@ -96,21 +114,22 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel2.Controls.Add(btnSettings, 0, 1);
             tableLayoutPanel2.Dock = DockStyle.Bottom;
-            tableLayoutPanel2.Location = new Point(0, 675);
+            tableLayoutPanel2.Location = new Point(0, 719);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle());
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(284, 50);
+            tableLayoutPanel2.RowStyles.Add(new RowStyle());
+            tableLayoutPanel2.Size = new Size(284, 42);
             tableLayoutPanel2.TabIndex = 2;
             // 
             // btnSettings
             // 
+            btnSettings.AutoEllipsis = true;
             btnSettings.Dock = DockStyle.Fill;
-            btnSettings.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSettings.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnSettings.Location = new Point(3, 3);
             btnSettings.Name = "btnSettings";
-            btnSettings.Size = new Size(278, 44);
+            btnSettings.Size = new Size(278, 36);
             btnSettings.TabIndex = 0;
             btnSettings.Text = "Settings";
             btnSettings.TextAlign = ContentAlignment.MiddleLeft;
@@ -119,12 +138,11 @@
             // 
             // panel3
             // 
-            panel3.AutoSize = true;
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(284, 0);
             panel3.Name = "panel3";
-            panel3.Padding = new Padding(25, 0, 0, 0);
-            panel3.Size = new Size(918, 725);
+            panel3.Padding = new Padding(10, 0, 0, 0);
+            panel3.Size = new Size(920, 761);
             panel3.TabIndex = 3;
             // 
             // MainPage
@@ -132,10 +150,9 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(1202, 725);
+            ClientSize = new Size(1204, 761);
             Controls.Add(panel3);
             Controls.Add(panel2);
-            DoubleBuffered = true;
             HelpButton = true;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainPage";
@@ -149,7 +166,6 @@
             panel2.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -160,5 +176,6 @@
         private Panel panel3;
         private TableLayoutPanel tableLayoutPanel2;
         private Button btnSettings;
+        private Button btnBasicTools;
     }
 }

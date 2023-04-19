@@ -7,10 +7,11 @@ namespace Windows_Cleanup
 {
     public partial class MainPage : Form, IDisposable
     {
-        public Button buttonHome, buttonSettings;
+        public Button buttonHome, buttonSettings, buttonBasicTools;
         public static MainPage mainPageInstance;
         HomeView homeView = new HomeView();
         SettingsView settingsView = new SettingsView();
+        BasicToolsView basicToolsView = new BasicToolsView();
         bool updateThemeTaskRunning;
         bool isLightMode;
         [DllImport("DwmApi")]
@@ -18,24 +19,28 @@ namespace Windows_Cleanup
         public MainPage()
         {
             InitializeComponent();
-            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
-            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            OptimizedDoubleBuffer();
             mainPageInstance = this;
             buttonHome = btnHome;
             buttonSettings = btnSettings;
+            buttonBasicTools = btnBasicTools;
         }
 
         private void MainPage_Load(object sender, EventArgs e)
         {
             panel3.Tag = "HomeView";
             switchPanel(homeView);
-            memoryFreeUp();
+            ThemeHelper.buttonBorderClear();
+            btnHome.FlatAppearance.BorderSize = 1;
+            //memoryFreeUp();
             //themeChecker();
         }
 
         public void memoryFreeUp()
         {
+            Invalidate();
+            Refresh();
+            Update();
             GC.Collect();
             GC.WaitForPendingFinalizers();
             GC.Collect();
@@ -53,8 +58,11 @@ namespace Windows_Cleanup
                     return;
                 }
                 ThemeHelper.DarkTheme();
+                Invalidate();
+                Refresh();
+                Update();
                 isLightMode = false;
-                memoryFreeUp();
+                //memoryFreeUp();
                 return;
             }
             else // Light Mode
@@ -62,8 +70,11 @@ namespace Windows_Cleanup
                 DwmSetWindowAttribute(Handle, 19, new[] { 0 }, 4);
                 ThemeHelper.LightTheme();
                 isLightMode = true;
+                Invalidate();
+                Refresh();
+                Update();
             }
-            memoryFreeUp();
+            //memoryFreeUp();
             return;
         }
 
@@ -74,9 +85,9 @@ namespace Windows_Cleanup
             {
                 await Task.Delay(500);
                 themeChecker();
+                memoryFreeUp();
             }
             while (updateThemeTaskRunning);
-            memoryFreeUp();
             return;
         }
 
@@ -86,9 +97,9 @@ namespace Windows_Cleanup
             panel.TopLevel = false;
             panel.FormBorderStyle = FormBorderStyle.None;
             panel.Dock = DockStyle.Fill;
-            panel.AutoSize = true;
+            //panel.AutoSize = true;
             panel.AutoSizeMode = AutoSizeMode.GrowOnly;
-            panel.AutoScroll = true;
+            //panel.AutoScroll = true;
             panel3.Controls.Add(panel);
             panel3.AutoSize = true;
             panel.TopMost = true;
@@ -102,7 +113,10 @@ namespace Windows_Cleanup
         {
             _ = updateTheme();
             updateThemeTaskRunning = false;
-            return;
+            Invalidate();
+            Refresh();
+            Update();
+            //memoryFreeUp(); <- causes minimize freeze
         }
 
         private void MainPage_Deactivate(object sender, EventArgs e)
@@ -114,14 +128,19 @@ namespace Windows_Cleanup
                 // Do some stuff
                 _ = updateTheme();
                 updateThemeTaskRunning = false;
-                return;
             }
-            return;
         }
 
         private void MainPage_ResizeEnd(object sender, EventArgs e)
         {
             memoryFreeUp();
+        }
+
+        public void OptimizedDoubleBuffer()
+        {
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             return;
         }
 
@@ -134,8 +153,10 @@ namespace Windows_Cleanup
             else
             {
                 panel3.Tag = "HomeView";
+                ThemeHelper.buttonBorderClear();
+                btnHome.FlatAppearance.BorderSize = 1;
                 switchPanel(homeView);
-                memoryFreeUp();
+                //memoryFreeUp();
                 return;
             }
         }
@@ -149,11 +170,29 @@ namespace Windows_Cleanup
             else
             {
                 panel3.Tag = "SettingsView";
+                ThemeHelper.buttonBorderClear();
+                btnSettings.FlatAppearance.BorderSize = 1;
                 switchPanel(settingsView);
-                memoryFreeUp();
+                //memoryFreeUp();
                 return;
             }
         }
 
+        private void btnBasicTools_Click(object sender, EventArgs e)
+        {
+            if (panel3.Tag?.ToString() == "BasicToolsView")
+            {
+                return;
+            }
+            else
+            {
+                panel3.Tag = "BasicToolsView";
+                ThemeHelper.buttonBorderClear();
+                btnBasicTools.FlatAppearance.BorderSize = 1;
+                switchPanel(basicToolsView);
+                //memoryFreeUp();
+                return;
+            }
+        }
     }
 }
