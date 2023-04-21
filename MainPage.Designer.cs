@@ -176,10 +176,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainPage";
             Text = "Windows Cleanup";
-            Activated += MainPage_Activated;
-            Deactivate += MainPage_Deactivate;
             Load += MainPage_Load;
-            ResizeEnd += MainPage_ResizeEnd;
             tableLayoutPanel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();

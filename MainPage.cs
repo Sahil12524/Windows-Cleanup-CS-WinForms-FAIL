@@ -13,19 +13,24 @@ namespace Windows_Cleanup
         SettingsView settingsView = new SettingsView();
         BasicToolsView basicToolsView = new BasicToolsView();
         NetToolsView netToolsView = new NetToolsView();
-        bool updateThemeTaskRunning;
-        bool isLightMode;
         [DllImport("DwmApi")]
         private static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, int[] attrValue, int attrSize);
         public MainPage()
         {
             InitializeComponent();
             OptimizedDoubleBuffer();
+            SystemEvents.UserPreferenceChanged += SystemEvents_UserPreferenceChanged;
             mainPageInstance = this;
             buttonHome = btnHome;
             buttonSettings = btnSettings;
             buttonBasicTools = btnBasicTools;
             buttonNetTools = btnNetTools;
+            this.Disposed += new EventHandler(Form_Disposed);
+        }
+
+        private void Form_Disposed(object? sender, EventArgs e)
+        {
+            SystemEvents.UserPreferenceChanged -= SystemEvents_UserPreferenceChanged;
         }
 
         private void MainPage_Load(object sender, EventArgs e)
@@ -34,19 +39,23 @@ namespace Windows_Cleanup
             switchPanel(homeView);
             ThemeHelper.buttonBorderClear();
             btnHome.FlatAppearance.BorderSize = 1;
-            //memoryFreeUp();
-            //themeChecker();
         }
 
         public void memoryFreeUp()
         {
-            Invalidate();
-            Refresh();
-            Update();
             GC.Collect();
             GC.WaitForPendingFinalizers();
             GC.Collect();
             return;
+        }
+
+        private void SystemEvents_UserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
+        {
+            if (e.Category == UserPreferenceCategory.VisualStyle || e.Category == UserPreferenceCategory.General)
+            {
+                // Windows theme has changed, so update the application theme
+                themeChecker();
+            }
         }
 
         public void themeChecker()
@@ -60,36 +69,13 @@ namespace Windows_Cleanup
                     return;
                 }
                 ThemeHelper.DarkTheme();
-                Invalidate();
-                Refresh();
-                Update();
-                isLightMode = false;
-                //memoryFreeUp();
                 return;
             }
             else // Light Mode
             {
                 DwmSetWindowAttribute(Handle, 19, new[] { 0 }, 4);
                 ThemeHelper.LightTheme();
-                isLightMode = true;
-                Invalidate();
-                Refresh();
-                Update();
             }
-            //memoryFreeUp();
-            return;
-        }
-
-        public async Task updateTheme()
-        {
-            updateThemeTaskRunning = true;
-            do
-            {
-                await Task.Delay(500);
-                themeChecker();
-                memoryFreeUp();
-            }
-            while (updateThemeTaskRunning);
             return;
         }
 
@@ -107,35 +93,7 @@ namespace Windows_Cleanup
             panel.TopMost = true;
             panel.BringToFront();
             panel.Show();
-            memoryFreeUp();
             return;
-        }
-
-        private void MainPage_Activated(object sender, EventArgs e)
-        {
-            _ = updateTheme();
-            updateThemeTaskRunning = false;
-            Invalidate();
-            Refresh();
-            Update();
-            //memoryFreeUp(); <- causes minimize freeze
-        }
-
-        private void MainPage_Deactivate(object sender, EventArgs e)
-        {
-            //updateThemeTaskRunning = true;
-            _ = updateTheme();
-            if (WindowState == FormWindowState.Minimized)
-            {
-                // Do some stuff
-                _ = updateTheme();
-                updateThemeTaskRunning = false;
-            }
-        }
-
-        private void MainPage_ResizeEnd(object sender, EventArgs e)
-        {
-            memoryFreeUp();
         }
 
         public void OptimizedDoubleBuffer()
@@ -158,7 +116,6 @@ namespace Windows_Cleanup
                 ThemeHelper.buttonBorderClear();
                 btnHome.FlatAppearance.BorderSize = 1;
                 switchPanel(homeView);
-                //memoryFreeUp();
                 return;
             }
         }
@@ -175,7 +132,6 @@ namespace Windows_Cleanup
                 ThemeHelper.buttonBorderClear();
                 btnSettings.FlatAppearance.BorderSize = 1;
                 switchPanel(settingsView);
-                //memoryFreeUp();
                 return;
             }
         }
@@ -192,7 +148,6 @@ namespace Windows_Cleanup
                 ThemeHelper.buttonBorderClear();
                 btnBasicTools.FlatAppearance.BorderSize = 1;
                 switchPanel(basicToolsView);
-                //memoryFreeUp();
                 return;
             }
         }
@@ -209,7 +164,6 @@ namespace Windows_Cleanup
                 ThemeHelper.buttonBorderClear();
                 btnNetTools.FlatAppearance.BorderSize = 1;
                 switchPanel(netToolsView);
-                //memoryFreeUp();
                 return;
             }
         }
