@@ -1,9 +1,11 @@
-﻿using Windows_Cleanup.Views;
+﻿using Microsoft.Win32;
+using Windows_Cleanup.Views;
 
 namespace Windows_Cleanup.Helper
 {
     public class ThemeHelper
     {
+        public static ThemeHelper? themeHelperInstance { get; set; }
         public static void buttonBorderClear()
         {
             if (MainPage.mainPageInstance != null)
@@ -17,7 +19,6 @@ namespace Windows_Cleanup.Helper
             {
                 return;
             }
-            return;
         }
         public static void DarkTheme()
         {
@@ -120,8 +121,6 @@ namespace Windows_Cleanup.Helper
             {
                 return;
             }
-
-            return;
         }
 
         public static void LightTheme()
@@ -226,8 +225,39 @@ namespace Windows_Cleanup.Helper
             {
                 return;
             }
+        }
 
-            return;
+
+        // Source: This is Windows 11 (TIW11)
+        // Get default Windows 11 theme
+        public static bool AppsUseLightTheme()
+        {
+            bool AppsUseLightTheme = true;
+            try
+            {
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize")!)
+                {
+                    if (key != null && key.GetValue("AppsUseLightTheme") != null)
+                    {
+                        Int64 value = Convert.ToInt64(key.GetValue("AppsUseLightTheme")!.ToString());
+                        if (value == 0)
+                            AppsUseLightTheme = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "AppsUseLightTheme");
+            }
+
+            if (AppsUseLightTheme)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

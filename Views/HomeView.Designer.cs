@@ -98,7 +98,7 @@
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1197, 213);
+            tableLayoutPanel1.Size = new Size(1197, 211);
             tableLayoutPanel1.TabIndex = 4;
             // 
             // tableLayoutPanel3
@@ -114,7 +114,7 @@
             tableLayoutPanel3.RowCount = 2;
             tableLayoutPanel3.RowStyles.Add(new RowStyle());
             tableLayoutPanel3.RowStyles.Add(new RowStyle());
-            tableLayoutPanel3.Size = new Size(393, 207);
+            tableLayoutPanel3.Size = new Size(393, 205);
             tableLayoutPanel3.TabIndex = 6;
             // 
             // label2
@@ -124,7 +124,7 @@
             label2.Dock = DockStyle.Fill;
             label2.FlatStyle = FlatStyle.Flat;
             label2.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(3, 39);
+            label2.Location = new Point(3, 37);
             label2.Name = "label2";
             label2.Size = new Size(387, 168);
             label2.TabIndex = 0;
@@ -133,10 +133,12 @@
             // label4
             // 
             label4.AutoEllipsis = true;
+            label4.AutoSize = true;
+            label4.Dock = DockStyle.Fill;
             label4.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
             label4.Location = new Point(3, 0);
             label4.Name = "label4";
-            label4.Size = new Size(387, 39);
+            label4.Size = new Size(387, 37);
             label4.TabIndex = 1;
             label4.Text = "How this app works?";
             // 
@@ -153,7 +155,7 @@
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle());
             tableLayoutPanel2.RowStyles.Add(new RowStyle());
-            tableLayoutPanel2.Size = new Size(393, 207);
+            tableLayoutPanel2.Size = new Size(393, 205);
             tableLayoutPanel2.TabIndex = 5;
             // 
             // label3
@@ -163,7 +165,7 @@
             label3.Dock = DockStyle.Fill;
             label3.FlatStyle = FlatStyle.Flat;
             label3.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(3, 39);
+            label3.Location = new Point(3, 37);
             label3.Name = "label3";
             label3.Size = new Size(387, 168);
             label3.TabIndex = 0;
@@ -172,11 +174,13 @@
             // label7
             // 
             label7.AutoEllipsis = true;
+            label7.AutoSize = true;
+            label7.Dock = DockStyle.Fill;
             label7.FlatStyle = FlatStyle.Flat;
             label7.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
             label7.Location = new Point(3, 0);
             label7.Name = "label7";
-            label7.Size = new Size(317, 39);
+            label7.Size = new Size(387, 37);
             label7.TabIndex = 1;
             label7.Text = "Hello there,";
             // 
@@ -193,7 +197,7 @@
             tableLayoutPanel5.RowCount = 2;
             tableLayoutPanel5.RowStyles.Add(new RowStyle());
             tableLayoutPanel5.RowStyles.Add(new RowStyle());
-            tableLayoutPanel5.Size = new Size(393, 207);
+            tableLayoutPanel5.Size = new Size(393, 205);
             tableLayoutPanel5.TabIndex = 7;
             // 
             // label5
@@ -203,7 +207,7 @@
             label5.Dock = DockStyle.Fill;
             label5.FlatStyle = FlatStyle.Flat;
             label5.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(3, 39);
+            label5.Location = new Point(3, 37);
             label5.Name = "label5";
             label5.Size = new Size(387, 168);
             label5.TabIndex = 0;
@@ -212,10 +216,12 @@
             // label6
             // 
             label6.AutoEllipsis = true;
+            label6.AutoSize = true;
+            label6.Dock = DockStyle.Fill;
             label6.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
             label6.Location = new Point(3, 0);
             label6.Name = "label6";
-            label6.Size = new Size(289, 39);
+            label6.Size = new Size(387, 37);
             label6.TabIndex = 1;
             label6.Text = "Why to use this app?";
             // 

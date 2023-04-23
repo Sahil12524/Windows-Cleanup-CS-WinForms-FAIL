@@ -9,15 +9,17 @@ namespace Windows_Cleanup
     {
         public Button buttonHome, buttonSettings, buttonBasicTools, buttonNetTools;
         public static MainPage? mainPageInstance { get; set; }
-        HomeView homeView = new HomeView();
-        SettingsView settingsView = new SettingsView();
-        BasicToolsView basicToolsView = new BasicToolsView();
-        NetToolsView netToolsView = new NetToolsView();
+        readonly HomeView homeView = new();
+        readonly SettingsView settingsView = new();
+        readonly BasicToolsView basicToolsView = new();
+        readonly NetToolsView netToolsView = new();
+        readonly ThemeHelper themeHelper = new();
         [DllImport("DwmApi")]
         private static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, int[] attrValue, int attrSize);
         public MainPage()
         {
             InitializeComponent();
+            AutoScaleMode = AutoScaleMode.Dpi;
             OptimizedDoubleBuffer();
             SystemEvents.UserPreferenceChanged += SystemEvents_UserPreferenceChanged;
             mainPageInstance = this;
@@ -25,7 +27,7 @@ namespace Windows_Cleanup
             buttonSettings = btnSettings;
             buttonBasicTools = btnBasicTools;
             buttonNetTools = btnNetTools;
-            this.Disposed += new EventHandler(Form_Disposed);
+            Disposed += new EventHandler(Form_Disposed);
         }
 
         private void Form_Disposed(object? sender, EventArgs e)
@@ -60,23 +62,26 @@ namespace Windows_Cleanup
 
         public void themeChecker()
         {
-            int lightmode = (int)Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", "AppsUseLightTheme", "1")!;
+            int? lightmode = (int)Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", "AppsUseLightTheme", "1")!;
+            if (!ThemeHelper.AppsUseLightTheme())
+            {
+                ThemeHelper.DarkTheme();
+            }
+            else
+            {
+                ThemeHelper.LightTheme();
+            }
             if (lightmode != 1) // Dark Mode
             {
                 if (DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0)
                 {
                     DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4);
-                    return;
                 }
-                ThemeHelper.DarkTheme();
-                return;
             }
-            else // Light Mode
+            else if (lightmode == 1)// Light Mode
             {
                 DwmSetWindowAttribute(Handle, 19, new[] { 0 }, 4);
-                ThemeHelper.LightTheme();
             }
-            return;
         }
 
         public void switchPanel(Form panel)
@@ -86,13 +91,14 @@ namespace Windows_Cleanup
             panel.FormBorderStyle = FormBorderStyle.None;
             panel.Dock = DockStyle.Fill;
             //panel.AutoSize = true;
-            panel.AutoSizeMode = AutoSizeMode.GrowOnly;
+            //panel.AutoSizeMode = AutoSizeMode.GrowOnly;
             //panel.AutoScroll = true;
             panel3.Controls.Add(panel);
             panel3.AutoSize = true;
             panel.TopMost = true;
             panel.BringToFront();
             panel.Show();
+            panel.AutoScaleMode = AutoScaleMode.Dpi;
             return;
         }
 

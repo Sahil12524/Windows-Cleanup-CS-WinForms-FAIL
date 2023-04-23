@@ -60,7 +60,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.Size = new Size(284, 126);
+            tableLayoutPanel1.Size = new Size(295, 126);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // btnNetTools
@@ -70,7 +70,7 @@
             btnNetTools.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnNetTools.Location = new Point(3, 87);
             btnNetTools.Name = "btnNetTools";
-            btnNetTools.Size = new Size(278, 36);
+            btnNetTools.Size = new Size(289, 36);
             btnNetTools.TabIndex = 2;
             btnNetTools.Text = "Net Tools";
             btnNetTools.TextAlign = ContentAlignment.MiddleLeft;
@@ -84,7 +84,7 @@
             btnBasicTools.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnBasicTools.Location = new Point(3, 45);
             btnBasicTools.Name = "btnBasicTools";
-            btnBasicTools.Size = new Size(278, 36);
+            btnBasicTools.Size = new Size(289, 36);
             btnBasicTools.TabIndex = 1;
             btnBasicTools.Text = "Basic Tools";
             btnBasicTools.TextAlign = ContentAlignment.MiddleLeft;
@@ -98,7 +98,7 @@
             btnHome.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnHome.Location = new Point(3, 3);
             btnHome.Name = "btnHome";
-            btnHome.Size = new Size(278, 36);
+            btnHome.Size = new Size(289, 36);
             btnHome.TabIndex = 0;
             btnHome.Text = "Home";
             btnHome.TextAlign = ContentAlignment.MiddleLeft;
@@ -110,7 +110,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(284, 40);
+            panel1.Size = new Size(295, 40);
             panel1.TabIndex = 1;
             // 
             // panel2
@@ -122,7 +122,7 @@
             panel2.Dock = DockStyle.Left;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(284, 761);
+            panel2.Size = new Size(295, 641);
             panel2.TabIndex = 2;
             // 
             // tableLayoutPanel2
@@ -133,12 +133,12 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel2.Controls.Add(btnSettings, 0, 1);
             tableLayoutPanel2.Dock = DockStyle.Bottom;
-            tableLayoutPanel2.Location = new Point(0, 719);
+            tableLayoutPanel2.Location = new Point(0, 599);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle());
             tableLayoutPanel2.RowStyles.Add(new RowStyle());
-            tableLayoutPanel2.Size = new Size(284, 42);
+            tableLayoutPanel2.Size = new Size(295, 42);
             tableLayoutPanel2.TabIndex = 2;
             // 
             // btnSettings
@@ -148,7 +148,7 @@
             btnSettings.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnSettings.Location = new Point(3, 3);
             btnSettings.Name = "btnSettings";
-            btnSettings.Size = new Size(278, 36);
+            btnSettings.Size = new Size(289, 36);
             btnSettings.TabIndex = 0;
             btnSettings.Text = "Settings";
             btnSettings.TextAlign = ContentAlignment.MiddleLeft;
@@ -158,10 +158,9 @@
             // panel3
             // 
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(284, 0);
+            panel3.Location = new Point(295, 0);
             panel3.Name = "panel3";
-            panel3.Padding = new Padding(10, 0, 0, 0);
-            panel3.Size = new Size(920, 761);
+            panel3.Size = new Size(789, 641);
             panel3.TabIndex = 3;
             // 
             // MainPage
@@ -169,12 +168,13 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(1204, 761);
+            ClientSize = new Size(1084, 641);
             Controls.Add(panel3);
             Controls.Add(panel2);
             HelpButton = true;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainPage";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Windows Cleanup";
             Load += MainPage_Load;
             tableLayoutPanel1.ResumeLayout(false);
