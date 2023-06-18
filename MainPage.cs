@@ -1,4 +1,5 @@
 using Microsoft.Win32;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Windows_Cleanup.Helper;
 using Windows_Cleanup.Views;
@@ -49,6 +50,31 @@ namespace Windows_Cleanup
             GC.WaitForPendingFinalizers();
             GC.Collect();
             return;
+        }
+
+        public void cmdExec(string? proc, string? args)
+        {
+            Process process = new();
+            try
+            {
+                process.StartInfo.FileName = proc;
+                process.StartInfo.CreateNoWindow = false;
+                process.StartInfo.RedirectStandardInput = true;
+                process.StartInfo.RedirectStandardOutput = false;
+                process.StartInfo.UseShellExecute = false;
+                process.Start();
+                process.StandardInput.WriteLine(args);
+                process.WaitForExit();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "" + ex);
+            }
+            finally
+            {
+                process.StandardInput.Flush();
+                process.StandardInput.Close();
+            }
         }
 
         private void SystemEvents_UserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
