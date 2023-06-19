@@ -10,6 +10,7 @@
     <SignAssembly>True</SignAssembly>
     <UseWPF>True</UseWPF>
     <ApplicationIcon>cleaning broom.ico</ApplicationIcon>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>

@@ -15,8 +15,8 @@ namespace Windows_Cleanup
         readonly BasicToolsView basicToolsView = new();
         readonly NetToolsView netToolsView = new();
         readonly ThemeHelper themeHelper = new();
-        [DllImport("DwmApi")]
-        private static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, int[] attrValue, int attrSize);
+        [LibraryImport("DwmApi")]
+        private static partial int DwmSetWindowAttribute(IntPtr hwnd, int attr, int[] attrValue, int attrSize);
         public MainPage()
         {
             InitializeComponent();
@@ -88,7 +88,7 @@ namespace Windows_Cleanup
 
         public void themeChecker()
         {
-            int? lightmode = (int)Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", "AppsUseLightTheme", "1")!;
+            var lightmode = (int)Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", "AppsUseLightTheme", "1")!;
             if (!ThemeHelper.AppsUseLightTheme())
             {
                 ThemeHelper.DarkTheme();
